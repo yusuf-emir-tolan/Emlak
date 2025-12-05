@@ -14,12 +14,12 @@ def generate(prompt, max_length):
     outputs = model.generate(
         input_ids,
         max_length=max_length,
-        num_return_sequences=10,  # 10 farklı ilan
+        num_return_sequences=10,
         temperature=0.9,
         top_k=50,
         top_p=0.95,
         pad_token_id=tokenizer.eos_token_id,
-        do_sample=True  # sampling açık
+        do_sample=True
     )
 
     ilanlar = []
@@ -44,4 +44,5 @@ demo = gr.Interface(
 
 if __name__ == "__main__":
     demo.launch()
+
 
