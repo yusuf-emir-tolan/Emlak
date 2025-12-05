@@ -10,12 +10,10 @@ import csv
 options = uc.ChromeOptions()
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
-# options.add_argument('--headless')  # Ýstersen aç
 
 driver = uc.Chrome(options=options)
 
-# Kaç sayfa veri çekmek istiyorsun?
-page_count = 10  # örnek: 10 sayfa × ~20 ilan = ~200 ilan
+page_count = 15
 veriler = []
 
 try:
@@ -46,7 +44,7 @@ try:
 
             veriler.append([title, price, location])
         
-        time.sleep(2)  # Sunucuyu yormamak için bekle
+        time.sleep(2)
 
 finally:
     print("\nislem tamamlandi, tarayici kapatiliyor...")
@@ -55,7 +53,6 @@ finally:
     except:
         pass
 
-# Veriyi CSV olarak kaydet
 with open("emlak_verisi.csv", "w", newline="", encoding="utf-8") as f:
     writer = csv.writer(f)
     writer.writerow(["Baslik", "Fiyat", "Konum"])
